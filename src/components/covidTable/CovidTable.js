@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Navi = () => {
+const CovidTable = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Navi = () => {
     )
 }
 
-export default Navi
+export default CovidTable
