@@ -10,7 +10,6 @@ const Navi = () => {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">COVID-19</NavbarBrand>
-
       </Navbar>
     </div>
   );

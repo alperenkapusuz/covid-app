@@ -1,28 +1,43 @@
-import React from 'react'
-import { Table } from 'reactstrap';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Table } from "reactstrap";
 
 const CovidTable = () => {
+  const [data, setCountries] = useState([]);
 
-    return (
-        <Table striped>
+  useEffect(() => {
+    axios
+      .get("https://api.covid19api.com/dayone/country/turkey")
+      .then((response) => setCountries(response.data));
+  }, []);
+
+  return (
+    <Table striped>
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Date</th>
+          <th>Active</th>
+          <th>Confirmed</th>
+          <th>Deaths</th>
+          <th>Recovered</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
+        {data.map((data) => {
+          return (
+            <tr key={data.Date}>
+              <th scope="row">{data.Date}</th>
+              <td>{data.Active}</td>
+              <td>{data.Confirmed}</td>
+              <td>{data.Deaths}</td>
+              <td>{data.Recovered}</td>
+            </tr>
+          );
+        })}
+
       </tbody>
     </Table>
-    )
-}
+  );
+};
 
-export default CovidTable
+export default CovidTable;
