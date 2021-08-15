@@ -8,7 +8,8 @@ const CovidTable = () => {
   useEffect(() => {
     axios
       .get("https://api.covid19api.com/dayone/country/turkey")
-      .then((response) => setCountries(response.data));
+      .then((response) => setCountries(response.data))
+      .catch(error => console.log({error}))
   }, []);
 
   return (
